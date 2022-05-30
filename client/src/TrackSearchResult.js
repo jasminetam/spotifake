@@ -18,7 +18,7 @@ export default function TrackSearchResult({ track, chooseTrack }) {
         style={{ height: "64px", width: "64px" }}
       />
       <div className="ml-3">{track.title}</div>
-      <div className="text-muted">{track.artist}</div>
+      <div className="ml-3 text-muted">{track.artist}</div>
     </div>
   );
 }

@@ -46,7 +46,7 @@ export default function Dashboard({ code }) {
     if (!accessToken) return;
 
     let cancel = false;
-    console.log(playingTrack);
+
     spotifyApi.searchTracks(search).then((res) => {
       if (cancel) return;
       setSearchResults(
