@@ -15,24 +15,24 @@ export default function Dashboard({ code }) {
   const [search, setSearch] = useState("");
   const [searchResults, setSearchResults] = useState([]);
   const [playingTrack, setPlayingTrack] = useState();
-  const [lyrics, setLyrics] = useState("");
+  const [trackLyrics, setTrackLyrics] = useState("");
 
-  function chooseTrack(track) {
+  function selectTrack(track) {
     setPlayingTrack(track);
     setSearch("");
-    setLyrics("");
+    setTrackLyrics("");
   }
   useEffect(() => {
     if (!playingTrack) return;
     axios
-      .get("http://localhost:3001/lyrics", {
+      .get("https://afternoon-plains-87877.herokuapp.com/lyrics", {
         params: {
           track: playingTrack.title,
           artist: playingTrack.artist,
         },
       })
       .then((res) => {
-        setLyrics(res.data.lyrics);
+        setTrackLyrics(res.data.lyrics);
       });
   }, [playingTrack]);
 
@@ -89,12 +89,12 @@ export default function Dashboard({ code }) {
           <TrackSearchResult
             track={track}
             key={track.uri}
-            chooseTrack={chooseTrack}
+            selectTrack={selectTrack}
           />
         ))}
         {searchResults.length === 0 && (
           <div className="text-center" style={{ whiteSpace: "pre" }}>
-            {lyrics}
+            {trackLyrics}
           </div>
         )}
       </div>
