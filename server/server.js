@@ -4,7 +4,7 @@ const cors = require("cors");
 const bodyParser = require("body-parser");
 const SpotifyWebApi = require("spotify-web-api-node");
 const lyricsFinder = require("lyrics-finder");
-const port = process.env.PORT || 3000
+const port = process.env.PORT || 3000;
 const app = express();
 app.use(cors());
 app.use(bodyParser.json());
